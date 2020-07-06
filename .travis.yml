@@ -1,0 +1,11 @@
+language: generic 
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  -  docker build -t myimg -f Dockerfile.dev . 
+
+script:
+  - docker run -e CI=true myimg npm run test  
